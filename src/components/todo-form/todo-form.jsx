@@ -5,9 +5,15 @@ import './todo-form.scss';
 export const TodoForm = () => {
   const { todos, setTodos } = React.useContext(TodosContext);
   const [task, setTask] = React.useState('');
-
+  
   const handleAddTodo = () => {
-    // Fin an ability to add new task
+    // Fix an ability to add new task
+    const newTask = {
+      id: todos.length > 0 ? todos[todos.length - 1].id + 1 : 0,
+      label: task,
+      checked: false,
+    };
+    setTodos([...todos, newTask]);
   };
 
   const handleKeyUp = (e) => {
